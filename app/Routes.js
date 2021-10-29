@@ -1,16 +1,16 @@
 var pgsql = require('../lib/pgsql')
 var utils = require('../common/utils')
-var createFollowers = require('./createFollowers');
+var createFollows = require('./createFollows');
 module.exports = (app, console) => {
 
 
     app.post('/createFollow',async (req, res) => {
-         result  = await createFollowers.createFollowing(req);
+         result  = await createFollows.createFollowing(req);
          utils.handleresult(res,result)
         }
     )
     app.post('/deleteFollow',async (req, res) => {
-        result  = await createFollowers.deleteFollowing(req);
+        result  = await createFollows.deleteFollowing(req);
         utils.handleresult(res,result)
         }
     )

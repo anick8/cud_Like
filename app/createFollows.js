@@ -1,7 +1,7 @@
 var pgsql = require('../lib/pgsql')
 //var hash =require('../lib/hash')
 
-exports.createFollowing = async (req) => {
+exports.createFollow = async (req) => {
         var Follower= req.body.Follower;
         var Following = req.body.Following;
         var qarg=[Follower,Following]        
@@ -11,16 +11,16 @@ exports.createFollowing = async (req) => {
             console.log(result.rowCount)
             if (result.rowCount == 1)
                 data = {"Following":Following}
-                return [null,data,"Successfully created Follower/Follwing"]
+                return [null,data,"Successfully created Follow"]
         }
         catch(err)
         {
-            return [err,null,"Error Inserting Follower/Following to the database : "+err.detail]
+            return [err,null,"Error Inserting Follow to the database : "+err.detail]
         }
 
 };
 
-exports.deleteFollowing = async (req) => {
+exports.deleteFollow = async (req) => {
     var {Follower,Following} = req.body;
     var qarg=[Follower,Following]
     qname='delete from "Follow" where "Follower"= $1 AND "Following"=$2' 
@@ -29,12 +29,12 @@ exports.deleteFollowing = async (req) => {
         if (result.rowCount == 1)
         {
             data = {"Follower":Follower,"Following":Following}
-            return [null,data,"Successfully deleted Following"]
+            return [null,data,"Successfully deleted Follow"]
         }   
         else if(result.rowCount == 0)
         {
             err={'err':'Follower/Following does not exixt'}
-            return [err,null,"Error deleting Follower/Following"]
+            return [err,null,"Error deleting Follow"]
         }
     }
     catch(err)
