@@ -5,12 +5,12 @@ module.exports = (app, console) => {
 
 
     app.post('/createFollow',async (req, res) => {
-         result  = await createFollows.createFollowing(req);
+         result  = await createFollows.createFollow(req);
          utils.handleresult(res,result)
         }
     )
     app.post('/deleteFollow',async (req, res) => {
-        result  = await createFollows.deleteFollowing(req);
+        result  = await createFollows.deleteFollow(req);
         utils.handleresult(res,result)
         }
     )
