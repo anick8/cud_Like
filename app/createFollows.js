@@ -10,8 +10,8 @@ exports.createFollow = async (req) => {
             result =await pgsql.conquery(qname,qarg)
             console.log(result.rowCount)
             if (result.rowCount == 1)
-                data = {"Following":Following}
                 return [null,data,"Successfully created Follow"]
+            return [null,null,"Error creating Follow"]
         }
         catch(err)
         {
@@ -33,8 +33,8 @@ exports.deleteFollow = async (req) => {
         }   
         else if(result.rowCount == 0)
         {
-            err={'err':'Follower/Following does not exixt'}
-            return [err,null,"Error deleting Follow"]
+            data={'err':'Follower/Following does not exixt'}
+            return [null,data,"Error deleting Follow"]
         }
     }
     catch(err)
