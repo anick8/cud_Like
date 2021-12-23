@@ -1,16 +1,20 @@
-var pgsql = require('../lib/pgsql')
 var utils = require('../common/utils')
-var createFollows = require('./createFollows');
+var cudLikes = require('./cudLikes');
 module.exports = (app, console) => {
 
 
-    app.post('/createFollow',async (req, res) => {
-         result  = await createFollows.createFollow(req);
+    app.post('/createLike',async (req, res) => {
+         result  = await cudLikes.createLike(req);
          utils.handleresult(res,result)
         }
     )
-    app.post('/deleteFollow',async (req, res) => {
-        result  = await createFollows.deleteFollow(req);
+    app.post('/deleteLike',async (req, res) => {
+        result  = await cudLikes.deleteLike(req);
+        utils.handleresult(res,result)
+        }
+    )
+    app.post('/deleteAllLikes',async (req, res) => {
+        result  = await cudLikes.deleteAllLikes(req);
         utils.handleresult(res,result)
         }
     )
